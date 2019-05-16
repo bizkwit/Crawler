@@ -42,7 +42,7 @@ class Spider:
         if page_url not in Spider.open_list_set:
             print(name + " working on: "+ page_url)
             print('In queue :'+ str(len(Spider.open_list_set)) + ' | Visited: '+ str(len(Spider.close_list_set)))
-            Spider.add_links(Spider.get_links(page_url))
+            Spider.add_links_to_list(Spider.get_links(page_url))
             Spider.open_list_set.remove(page_url)
             Spider.closed_list_set.add(page_url)
             Spider.update_files()
@@ -65,5 +65,18 @@ class Spider:
             print("Error: cannot crawl page")
             return set()
         return finder.get_links()
-    
+
+    @staticmethod
+    def add_links_to_list(links):
+        for link in links:
+            if link in Spider.open_list_set or link in Spider.closed_list_set:
+                continue
+            if Spider.domain_name not in link:
+                continue
+            Spider.open_list_set.add(link)
+
+    @staticmethod
+    def update_files():
+        convert_to_file(Spider.open_list_set, Spider.open_list_file)
+        convert_to_file(Spider.closed_list_set, Spider.closed_list_file)
         
