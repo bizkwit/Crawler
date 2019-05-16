@@ -1,6 +1,6 @@
-# Crawler
-python web crawler:
-  1- uses priority list for each link it gathers
-  2- uses multithreads to run cralwers in parallel
+## Web Crawler
+A web crawler implemented using python:
 
-
+    1 - Uses priority queue for each link it gathers
+    2 - Uses miltuthreads to run crawlers in parallel
+    
