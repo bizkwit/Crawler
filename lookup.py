@@ -3,6 +3,9 @@ from urllib import parse
 
 
 class LinkLookup(HTMLParser):
+    '''
+    A class that handles html and extracts only the links on the webpage.
+    '''
 
     def __init__(self, homepage, current_page_url):
         super().__init__()
@@ -22,5 +25,5 @@ class LinkLookup(HTMLParser):
         return self.links
 
 
-finder = LinkLookup()
-finder.feed('<html><head><title>Test</title></head><body><h1>Parse Me!</h1></body></html>')
+# finder = LinkLookup()
+# finder.feed('<html><head><title>Test</title></head><body><h1>Parse Me!</h1></body></html>')
