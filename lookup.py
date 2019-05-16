@@ -2,10 +2,10 @@ from html.parser import HTMLParser
 from urllib import parse
 
 
-class LinkLookup(HTMLParser, homepage, current_page_url):
+class LinkLookup(HTMLParser):
 
-    def __init__(self):
-        return super().__init__()
+    def __init__(self, homepage, current_page_url):
+        super().__init__()
         self.homepage = homepage
         self.currentpage = current_page_url
         self.links = set()
