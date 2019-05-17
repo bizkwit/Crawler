@@ -16,4 +16,3 @@ def get_sub_domain_name(url):
         return ''
 
 
-# print(get_domain_name('https://docs.python.org/2/library/urlparse.html'))
