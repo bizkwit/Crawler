@@ -1,4 +1,4 @@
-from urllib.request import urlopen
+from urllib.request import urlopen,Request
 from lookup import LinkLookup
 from general import *
 
@@ -55,14 +55,20 @@ class Spider:
         '''
         html_string = ''
         try:
-            response = urlopen(page_url) #make connection
-            if response.getheader('content-type')== 'text/html':
+            request = Request(page_url) #make connection
+            response = urlopen(request)
+
+            try:
                 html_bytes = response.read()
                 html_string = html_bytes.decode('utf-8') #convert bytes to string
+            except Exception as e:
+                print(e.with_traceback())
+
             finder = LinkLookup(Spider.homepage, page_url)
-            finder.feed(html_string)
-        except:
-            print("Error: cannot crawl page")
+            finder.feed_html(html_string)
+
+        except Exception as e:
+            print("Error: cannot crawl page", e.with_traceback())
             return set()
         return finder.get_links()
 

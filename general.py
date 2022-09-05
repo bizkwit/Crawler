@@ -43,7 +43,7 @@ def convert_to_set(filename):
 
 #set iteration and back to the file
 def convert_to_file(set_variable, file):
-        with open(file,'w') as f:
+        with open(file,'w',encoding="utf-8") as f:
                 for entry in sorted(set_variable):
                         f.write(entry+'\n')
         

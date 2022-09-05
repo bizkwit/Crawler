@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
 from urllib import parse
+from bs4 import BeautifulSoup
 
 
 class LinkLookup(HTMLParser):
@@ -20,6 +21,17 @@ class LinkLookup(HTMLParser):
                 if attribute == 'href':
                     formatted_url = parse.urljoin(self.homepage, value)#if full url: do nothing. else combine with the homepage to make it full
                     self.links.add(formatted_url)
+
+    def feed_html(self, html_string):
+        soup = BeautifulSoup(html_string, 'html.parser')
+        links = soup.find_all('a')
+
+        for link in links:
+            formatted_url = parse.urljoin(self.homepage, link['href'])  # if full url: do nothing. else combine with the homepage
+            # to
+            # make it full
+            self.links.add(formatted_url)
+
     #links getter
     def get_links(self):
         return self.links
