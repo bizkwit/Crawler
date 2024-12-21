@@ -3,7 +3,6 @@
 [![GitHub license](https://img.shields.io/github/license/bizkwit/Crawler)](https://github.com/bizkwit/Crawler/blob/main/LICENSE)
 
 
-**bizkwit/Crawler**
 
 ## Overview
 
